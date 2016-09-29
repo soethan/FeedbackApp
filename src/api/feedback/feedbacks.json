@@ -4,56 +4,147 @@
         "name": "feedback 1", 
         "description": "feedback 1 description",
         "points": 10, 
-        "questions": [{
-            "feedbackId": "f0001",
-            "id": "f0001_q1",
-            "description": "Q1 desc",
-            "allowMultiple": false,
-            "options": [
-                {
-                    "questionId": "f0001_q1",
-                    "id": "f0001_q1_c1",
-                    "description": "Q1 Choice 1 desc"
-                }
-            ]
-        }]
+        "questions": 
+        [
+            {
+                "feedbackId": "f0001",
+                "id": "f0001_q1",
+                "description": "Q1 desc",
+                "allowMultiple": false,
+                "options": 
+                [
+                    {
+                        "questionId": "f0001_q1",
+                        "id": "f0001_q1_c1",
+                        "description": "Q1 Choice 1 desc"
+                    },
+                    {
+                        "questionId": "f0001_q1",
+                        "id": "f0001_q1_c2",
+                        "description": "Q1 Choice 1 desc"
+                    }
+                ]
+            },
+            {
+                "feedbackId": "f0001",
+                "id": "f0001_q2",
+                "description": "Do you like the food? Please rate from 1 to 5",
+                "allowMultiple": false,
+                "options": 
+                [
+                    {
+                        "questionId": "f0001_q2",
+                        "id": "f0001_q2_c1",
+                        "description": "1"
+                    },
+                    {
+                        "questionId": "f0001_q2",
+                        "id": "f0001_q2_c2",
+                        "description": "2"
+                    },
+                    {
+                        "questionId": "f0001_q2",
+                        "id": "f0001_q2_c3",
+                        "description": "3"
+                    },
+                    {
+                        "questionId": "f0001_q2",
+                        "id": "f0001_q2_c4",
+                        "description": "4"
+                    },
+                    {
+                        "questionId": "f0001_q2",
+                        "id": "f0001_q2_c5",
+                        "description": "5"
+                    }
+                ]
+            },
+            {
+                "feedbackId": "f0001",
+                "id": "f0001_q3",
+                "description": "Q3 desc",
+                "allowMultiple": false,
+                "options": 
+                [
+                    {
+                        "questionId": "f0001_q3",
+                        "id": "f0001_q3_c1",
+                        "description": "Q3 Choice 1 desc"
+                    },
+                    {
+                        "questionId": "f0001_q3",
+                        "id": "f0001_q3_c2",
+                        "description": "Q3 Choice 2 desc"
+                    },
+                    {
+                        "questionId": "f0001_q3",
+                        "id": "f0001_q3_c3",
+                        "description": "Others",
+                        "isCustomText": true
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "f0002",
         "name": "feedback 2", 
         "description": "feedback 2 description",
         "points": 20, 
-        "questions": [{
-            "feedbackId": "f0002",
-            "id": "f0002_q1",
-            "description": "Q1 desc",
-            "allowMultiple": false,
-            "options": [
-                {
-                    "questionId": "f0002_q1",
-                    "id": "f0002_q1_c1",
-                    "description": "Q1 Choice 1 desc"
-                }
-            ]
-        }]
+        "questions": 
+        [
+            {
+                "feedbackId": "f0002",
+                "id": "f0002_q1",
+                "description": "Q1 desc",
+                "allowMultiple": true,
+                "options": 
+                [
+                    {
+                        "questionId": "f0002_q1",
+                        "id": "f0002_q1_c1",
+                        "description": "Q1 Choice 1 desc"
+                    },
+                    {
+                        "questionId": "f0002_q1",
+                        "id": "f0002_q1_c2",
+                        "description": "Q1 Choice 2 desc"
+                    },
+                    {
+                        "questionId": "f0002_q1",
+                        "id": "f0002_q1_c3",
+                        "description": "Q1 Choice 3 desc"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "f0003",
         "name": "feedback 3", 
         "description": "feedback 3 description",
         "points": 30, 
-        "questions": [{
-            "feedbackId": "f0003",
-            "id": "f0003_q1",
-            "description": "Q1 desc",
-            "allowMultiple": false,
-            "options": [
-                {
-                    "questionId": "f0003_q1",
-                    "id": "f0003_q1_c1",
-                    "description": "Q1 Choice 1 desc"
-                }
-            ]
-        }]
+        "questions": 
+        [
+            {
+                "feedbackId": "f0003",
+                "id": "f0003_q1",
+                "description": "Q1 desc",
+                "allowMultiple": false,
+                "options": 
+                [
+                    {
+                        "questionId": "f0003_q1",
+                        "id": "f0003_q1_c1",
+                        "description": "Q1 Choice 1 desc"
+                    },
+                    {
+                        "questionId": "f0003_q1",
+                        "id": "f0003_q1_c2",
+                        "description": "Q1 Choice 2 desc"
+                    }
+                ]
+            }
+        ]
     }
 ]
