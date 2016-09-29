@@ -1,5 +1,10 @@
-.feedback{
-    display: block;
-    font-family: Arial;
-    font-size: 14px;
+.table-striped>thead>tr{
+    background-color:#000000;
+    color:#fff;
+}
+.table-striped>tbody>tr:nth-of-type(even){
+    background-color:#fcf8e3;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+    background-color:#ffffff;
 }

@@ -5,7 +5,7 @@
 
     <div class='panel-body'>
         <div class="container">
-			<table class='table'>
+			<table class='table table-striped'>
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -14,7 +14,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="info" *ngFor="let feedback of feedbacks">
+					<tr *ngFor="let feedback of feedbacks">
 						<td>
 							<a [routerLink]="['/feedback-detail', feedback.id]">
 								{{feedback.name}}
