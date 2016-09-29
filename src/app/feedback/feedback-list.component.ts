@@ -4,7 +4,7 @@ import {FeedbackService} from './feedback.service';
 
 @Component({
   selector: 'feedback-list',
-  styleUrls: ['./feedback-list.css'],
+  styleUrls: ['./feedback.css'],
   templateUrl: './feedback-list.html'
 })
 export class FeedbackListComponent implements OnInit{

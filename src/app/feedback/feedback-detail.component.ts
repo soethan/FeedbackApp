@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IFeedback } from './feedback';
+import { IFeedback, IUserFeedback } from './feedback';
 import { FeedbackService } from './feedback.service';
 
 @Component({
-    styleUrls: ['./feedback-list.css'],
+    styleUrls: ['./feedback.css'],
     templateUrl: './feedback-detail.html'
 })
 export class FeedbackDetailComponent implements OnInit, OnDestroy {
@@ -12,6 +12,7 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     private sub: any;
     feedback: IFeedback;
     errorMessage: string;
+    userFeedbacks: IUserFeedback[];
 
     constructor(private _feedbackService: FeedbackService,
         private router: Router,

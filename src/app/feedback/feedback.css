@@ -11,3 +11,7 @@
 .q-desc{
     font-weight: bold;    
 }
+.q-offset{
+    margin-top: 10px;
+    margin-left: 15px;
+}
