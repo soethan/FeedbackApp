@@ -8,3 +8,6 @@
 .table-striped>tbody>tr:nth-of-type(odd){
     background-color:#ffffff;
 }
+.q-desc{
+    font-weight: bold;    
+}

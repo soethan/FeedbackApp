@@ -4,6 +4,7 @@ import { IFeedback } from './feedback';
 import { FeedbackService } from './feedback.service';
 
 @Component({
+    styleUrls: ['./feedback-list.css'],
     templateUrl: './feedback-detail.html'
 })
 export class FeedbackDetailComponent implements OnInit, OnDestroy {

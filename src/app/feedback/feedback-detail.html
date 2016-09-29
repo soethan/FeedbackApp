@@ -20,6 +20,20 @@
                 </div>
             </div>
         </div>
+
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row' *ngFor="let q of feedback.questions">
+                    <div class="q-desc">{{q.description}}</div>
+
+                    <div *ngFor="let opt of q.options">
+                        <input type="radio" name="{{q.id}}" *ngIf="!q.allowMultiple" />
+                        <input type="checkbox" *ngIf="q.allowMultiple" />
+                        {{opt.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class='panel-footer'>
