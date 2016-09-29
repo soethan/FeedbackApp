@@ -1,25 +1,30 @@
-<div class="feedback">
-    <h3>Feedback List</h3>
-    <p>This is Feedback List component</p>
-    <div class="container">
-        <table class='table'
-                *ngIf="feedbacks && feedbacks.length">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="info" *ngFor="let feedback of feedbacks">
-                    <td>
-                        {{feedback.name}}
-                    </td>
-                    <td>{{feedback.description}}</td>
-                    <td>{{feedback.points}}</td>
-                </tr>
-            </tbody>
-        </table>
+<div class='panel panel-primary' *ngIf='feedbacks && feedbacks.length'>
+    <div class='panel-heading' style='font-size:large'>
+        Feedback List
+    </div>
+
+    <div class='panel-body'>
+        <div class="container">
+			<table class='table'>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="info" *ngFor="let feedback of feedbacks">
+						<td>
+							<a [routerLink]="['/feedback-detail', feedback.id]">
+								{{feedback.name}}
+							</a>
+						</td>
+						<td>{{feedback.description}}</td>
+						<td>{{feedback.points}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
     </div>
 </div>
