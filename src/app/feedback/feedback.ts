@@ -15,6 +15,7 @@ export interface IQuestion{
 export interface IQuestionOption{
     id: string;
     description: string;
+    isCustomText: boolean;
 }
 
 //User's feedbacks

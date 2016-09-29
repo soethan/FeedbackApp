@@ -8,17 +8,19 @@
         [
             {
                 "id": "f0001_q1",
-                "description": "Q1 desc",
+                "description": "Do you like our service?",
                 "allowMultiple": false,
                 "options": 
                 [
                     {
                         "id": "f0001_q1_c1",
-                        "description": "Q1 Choice 1 desc"
+                        "description": "Yes",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q1_c2",
-                        "description": "Q1 Choice 2 desc"
+                        "description": "No",
+                        "isCustomText": false
                     }
                 ]
             },
@@ -30,23 +32,28 @@
                 [
                     {
                         "id": "f0001_q2_c1",
-                        "description": "1"
+                        "description": "1",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q2_c2",
-                        "description": "2"
+                        "description": "2",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q2_c3",
-                        "description": "3"
+                        "description": "3",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q2_c4",
-                        "description": "4"
+                        "description": "4",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q2_c5",
-                        "description": "5"
+                        "description": "5",
+                        "isCustomText": false
                     }
                 ]
             },
@@ -58,11 +65,13 @@
                 [
                     {
                         "id": "f0001_q3_c1",
-                        "description": "Q3 Choice 1 desc"
+                        "description": "Q3 Choice 1 desc",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q3_c2",
-                        "description": "Q3 Choice 2 desc"
+                        "description": "Q3 Choice 2 desc",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0001_q3_c3",
@@ -88,15 +97,18 @@
                 [
                     {
                         "id": "f0002_q1_c1",
-                        "description": "Q1 Choice 1 desc"
+                        "description": "Q1 Choice 1 desc",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0002_q1_c2",
-                        "description": "Q1 Choice 2 desc"
+                        "description": "Q1 Choice 2 desc",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0002_q1_c3",
-                        "description": "Q1 Choice 3 desc"
+                        "description": "Q1 Choice 3 desc",
+                        "isCustomText": false
                     }
                 ]
             }
@@ -117,11 +129,13 @@
                 [
                     {
                         "id": "f0003_q1_c1",
-                        "description": "Q1 Choice 1 desc"
+                        "description": "Q1 Choice 1 desc",
+                        "isCustomText": false
                     },
                     {
                         "id": "f0003_q1_c2",
-                        "description": "Q1 Choice 2 desc"
+                        "description": "Q1 Choice 2 desc",
+                        "isCustomText": false
                     }
                 ]
             }

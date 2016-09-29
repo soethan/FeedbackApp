@@ -1,5 +1,5 @@
 <div class='panel panel-primary' *ngIf='feedback'>
-    <div class='panel-heading' style='font-size:large'>
+    <div class='panel-heading feedback-name-title'>
         {{feedback.name }}
     </div>
 
@@ -30,6 +30,8 @@
                         <input type="radio" name="{{q.id}}" *ngIf="!q.allowMultiple" />
                         <input type="checkbox" *ngIf="q.allowMultiple" />
                         {{opt.description}}
+                        <br />
+                        <textarea rows="4" cols="50" *ngIf="opt.isCustomText"></textarea> 
                     </div>
                 </div>
             </div>
@@ -37,8 +39,11 @@
     </div>
 
     <div class='panel-footer'>
-        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+        <a class='btn btn-default' (click)='onBack()'>
             <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+        <a class='btn btn-primary' (click)='onSubmit()'>
+            <i class='glyphicon glyphicon-ok'></i> Submit
         </a>
     </div>
 </div>

@@ -7,3 +7,6 @@
 - run `npm start` to fire up dev server
 - open browser to [`http://localhost:3000`](http://localhost:3000)
 - if you want to use other port, open `package.json` file, then change port in `--port 3000` script
+
+Bootstrap glyphicons icons:
+http://www.w3schools.com/icons/bootstrap_icons_glyphicons.asp

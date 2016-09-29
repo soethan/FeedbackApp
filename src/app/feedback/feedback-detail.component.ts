@@ -38,6 +38,10 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
             );
     }
 
+    onSubmit(): void{
+        
+    }
+
     onBack(): void {
         this.router.navigate(['feedback']);
     }
