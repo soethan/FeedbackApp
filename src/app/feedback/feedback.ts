@@ -15,6 +15,7 @@ export interface IQuestion{
 export interface IQuestionOption{
     id: string;
     description: string;
+    customText: string;
     isCustomText: boolean;
 }
 
@@ -37,4 +38,33 @@ export interface IUserAnswer{
 export interface IAnswerOption{
     id: string;
     description: string;
+}
+
+export class UserFeedback implements IUserFeedback{
+    feedbackId: string;
+    answers: IUserAnswer[];
+
+    constructor(id: string){
+        this.feedbackId = id;
+        this.answers = new Array<IUserAnswer>();
+    }
+}
+
+export class UserAnswer implements IUserAnswer{
+    questionId: string;
+    answerOptions: IAnswerOption[];
+
+    constructor(questionId: string){
+        this.questionId = questionId;
+        this.answerOptions = new Array<AnswerOption>();
+    }
+}
+
+export class AnswerOption implements IAnswerOption{
+    id: string;
+    description: string;
+    constructor(id: string, description: string){
+        this.id = id;
+        this.description = description;
+    }
 }
