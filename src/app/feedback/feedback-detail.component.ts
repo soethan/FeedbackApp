@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { IFeedback, IUserFeedback, UserFeedback, UserAnswer, AnswerOption, IQuestionOption } from './feedback';
 import { FeedbackService } from './feedback.service';
 
@@ -37,7 +38,12 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
             );
     }
 
-    onSelectOption(opt: IQuestionOption, qId, allowMultiple): void {
+    isSelected(opt: IQuestionOption, qId: string): boolean {
+        let userAns = this.userFeedback.answers.find(opt => opt.questionId === qId);
+        return (userAns != null && (userAns.answerOptions.find(ans => ans.id === opt.id) != null));
+    }
+
+    onSelectOption(opt: IQuestionOption, qId: string, allowMultiple: boolean): void {
         //userAnswer => 1 Question
         //console.log(opt.id + ";" + opt.description + ";" + qId);
 

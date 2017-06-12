@@ -1,8 +1,10 @@
 <div class='panel panel-primary' *ngIf='feedback'>
+    
     <div class='panel-heading feedback-name-title'>
         {{feedback.name }}
     </div>
 
+    <form #feedbackForm="ngForm">
     <div class='panel-body'>
         <div class='row'>
             <div class='col-md-6'>
@@ -31,7 +33,8 @@
                         <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
                         {{opt.description}}
                         <br />
-                        <textarea #ta rows="4" cols="50" (blur)="opt.customText=ta.value;onChangeCustomText(opt.id, ta.value, q.id)" *ngIf="opt.isCustomText"></textarea> 
+                        <textarea #ta rows="4" cols="50" (blur)="opt.customText=ta.value;onChangeCustomText(opt.id, ta.value, q.id)" *ngIf="opt.isCustomText" name="{{opt.id}}" [required]="isSelected(opt,q.id)" [(ngModel)]="opt.customText"></textarea>
+                         
                     </div>
                 </div>
             </div>
@@ -42,8 +45,11 @@
         <a class='btn btn-default' (click)='onBack()'>
             <i class='glyphicon glyphicon-chevron-left'></i> Back
         </a>
-        <a class='btn btn-primary' (click)='onSubmit()'>
+        <button type="button" (click)='onSubmit()' class="btn btn-primary" [disabled]="!feedbackForm.dirty || (feedbackForm.dirty && !feedbackForm.valid)">
             <i class='glyphicon glyphicon-ok'></i> Submit
-        </a>
+        </button>
+        feedbackForm.valid = {{feedbackForm.valid}}
+        feedbackForm.dirty = {{feedbackForm.dirty}}        
     </div>
+    </form>
 </div>
