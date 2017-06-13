@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core'
 import {RouterModule} from "@angular/router";
 import {rootRouterConfig} from "./app.routes";
 import {AppComponent} from "./app";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {About} from './about/about';
@@ -13,7 +13,7 @@ import {Home} from './home/home';
 
 @NgModule({
   declarations: [AppComponent, FeedbackListComponent, FeedbackDetailComponent, About, Home],
-  imports     : [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
+  imports     : [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
   providers   : [FeedbackService],
   bootstrap   : [AppComponent]
 })

@@ -4,7 +4,7 @@
         {{feedback.name }}
     </div>
 
-    <form #feedbackForm="ngForm">
+    <form [formGroup]="myForm">
     <div class='panel-body'>
         <div class='row'>
             <div class='col-md-6'>
@@ -27,13 +27,18 @@
             <div class='col-md-6 q-offset'>
                 <div class='row' *ngFor="let q of feedback.questions">
                     <div class="q-desc">{{q.description}}</div>
+                    <input #qElem name="{{q.id}}" />
 
                     <div *ngFor="let opt of q.options">
-                        <input type="radio" name="{{q.id}}" *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
+                        <input type="radio" name="{{'opt' + q.id}}" 
+                            *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
                         <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
                         {{opt.description}}
                         <br />
-                        <textarea #ta rows="4" cols="50" (blur)="opt.customText=ta.value;onChangeCustomText(opt.id, ta.value, q.id)" *ngIf="opt.isCustomText" name="{{opt.id}}" [required]="isSelected(opt,q.id)" [(ngModel)]="opt.customText"></textarea>
+                        <textarea #ta rows="4" cols="50" 
+                            (blur)="opt.customText=ta.value;onChangeCustomText(opt.id, ta.value, q.id);" 
+                            *ngIf="opt.isCustomText" name="{{opt.id}}">
+                        </textarea>
                          
                     </div>
                 </div>
@@ -45,11 +50,11 @@
         <a class='btn btn-default' (click)='onBack()'>
             <i class='glyphicon glyphicon-chevron-left'></i> Back
         </a>
-        <button type="button" (click)='onSubmit()' class="btn btn-primary" [disabled]="!feedbackForm.dirty || (feedbackForm.dirty && !feedbackForm.valid)">
+        <button type="button" (click)='onSubmit()' class="btn btn-primary" [disabled]="!myForm.dirty || (myForm.dirty && !myForm.valid)">
             <i class='glyphicon glyphicon-ok'></i> Submit
         </button>
-        feedbackForm.valid = {{feedbackForm.valid}}
-        feedbackForm.dirty = {{feedbackForm.dirty}}        
+        myForm.valid = {{myForm.valid}}
+        myForm.dirty = {{myForm.dirty}}        
     </div>
     </form>
 </div>

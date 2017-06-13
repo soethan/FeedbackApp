@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { IFeedback, IUserFeedback, UserFeedback, UserAnswer, AnswerOption, IQuestionOption } from './feedback';
 import { FeedbackService } from './feedback.service';
 
@@ -13,8 +13,9 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     feedback: IFeedback;
     errorMessage: string;
     userFeedback: IUserFeedback;
+    myForm: FormGroup;
 
-    constructor(private _feedbackService: FeedbackService,
+    constructor(private _formBuilder: FormBuilder, private _feedbackService: FeedbackService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {
     }
@@ -33,14 +34,17 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     getFeedback(id: string) {
         this._feedbackService.getFeedback(id)
             .subscribe(
-                feedback => this.feedback = feedback,
+                feedback => {
+                    this.feedback = feedback;
+                    let validationParamObj = {};
+
+                    this.feedback.questions.forEach(q => {
+                        validationParamObj[q.id] = ['', Validators.required]; 
+                    });
+                    this.myForm = this._formBuilder.group(validationParamObj);
+                },
                 error => this.errorMessage = <any>error
             );
-    }
-
-    isSelected(opt: IQuestionOption, qId: string): boolean {
-        let userAns = this.userFeedback.answers.find(opt => opt.questionId === qId);
-        return (userAns != null && (userAns.answerOptions.find(ans => ans.id === opt.id) != null));
     }
 
     onSelectOption(opt: IQuestionOption, qId: string, allowMultiple: boolean): void {
@@ -49,7 +53,7 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
 
         let isExistingAnswer: boolean;
         let userAns = this.userFeedback.answers.find(opt => opt.questionId == qId);
-
+        
         if(userAns != null) {
             isExistingAnswer = true;
             if(!allowMultiple) {
@@ -62,7 +66,10 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
 
         let customText = opt.customText ? opt.customText : "";
         userAns.answerOptions.push(new AnswerOption(opt.id, (opt.isCustomText ? customText : opt.description)));
-
+               
+        this.myForm.controls[qId].markAsDirty();
+        this.myForm.controls[qId].setValue(opt.id + ';' + customText);
+        
         if(!isExistingAnswer) {
             this.userFeedback.answers.push(userAns);
         }     
@@ -71,20 +78,13 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     }
 
     onChangeCustomText(optId, customText, qId): void {
-        let userAns = this.userFeedback.answers.find(opt => opt.questionId == qId);
-        let opt = userAns.answerOptions.find(opt => opt.id === optId);
-        if(opt != null) {
-
-            opt.description = customText;
-        }
-        else{
-            console.log('NOT checked...');
-        }
-        
+        this.myForm.controls[qId].setValue(this.myForm.controls[qId].value + customText);
     }
 
     onSubmit(): void {
-        console.log(this.userFeedback);
+        for(var key in this.myForm.controls) {
+            console.log(this.myForm.controls[key].value);
+        }
     }
 
     onBack(): void {
