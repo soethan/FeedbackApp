@@ -53,6 +53,7 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
 
     onSelectOption(opt: IQuestionOption, qId: string, allowMultiple: boolean, optCtrl: HTMLInputElement): void {
         this.myForm.controls[qId].markAsDirty();
+        
         if(!allowMultiple){
             this.myForm.controls[qId].setValue(opt.id);
         }
