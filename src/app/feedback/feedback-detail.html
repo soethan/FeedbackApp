@@ -55,7 +55,9 @@
         <button type="button" (click)='onSubmit()' class="btn btn-primary" [disabled]="!myForm.dirty || (myForm.dirty && !myForm.valid)">
             <i class='glyphicon glyphicon-ok'></i> Submit
         </button>
+        <br/>
         myForm.valid = {{myForm.valid}}
+        <br/>
         myForm.dirty = {{myForm.dirty}}        
     </div>
     </form>
