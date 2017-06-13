@@ -79,6 +79,24 @@
                         "isCustomText": true
                     }
                 ]
+            },
+            {
+                "id": "f0001_q4",
+                "description": "Do you like our service?",
+                "allowMultiple": true,
+                "options": 
+                [
+                    {
+                        "id": "f0001_q4_c1",
+                        "description": "choice 1",
+                        "isCustomText": false
+                    },
+                    {
+                        "id": "f0001_q4_c2",
+                        "description": "choice 2",
+                        "isCustomText": false
+                    }
+                ]
             }
         ]
     },

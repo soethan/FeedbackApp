@@ -37,7 +37,7 @@ export interface IUserAnswer{
 
 export interface IAnswerOption{
     id: string;
-    description: string;
+    customText: string;
 }
 
 export class UserFeedback implements IUserFeedback{
@@ -62,9 +62,9 @@ export class UserAnswer implements IUserAnswer{
 
 export class AnswerOption implements IAnswerOption{
     id: string;
-    description: string;
-    constructor(id: string, description: string){
+    customText: string;
+    constructor(id: string, customText: string){
         this.id = id;
-        this.description = description;
+        this.customText = customText;
     }
 }

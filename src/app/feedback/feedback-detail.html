@@ -33,8 +33,8 @@
                     <div *ngFor="let opt of q.options">
 
                         <input type="radio" name="{{'opt' + q.id}}" 
-                            *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
-                        <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
+                            *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
+                        <input #optChk type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple, optChk)" />
                         {{opt.description}}
                         <br />
                         <textarea #ta rows="4" cols="50" 
