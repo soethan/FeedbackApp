@@ -19,3 +19,9 @@
     font-size: 1.5em;
     font-weight: bold;
 }
+.q-error{
+    border-left: 3px solid #ff0000;
+}
+.q-ok{
+    border-left: 3px solid #00b200;
+}

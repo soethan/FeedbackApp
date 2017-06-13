@@ -26,10 +26,12 @@
         <div class='row'>
             <div class='col-md-6 q-offset'>
                 <div class='row' *ngFor="let q of feedback.questions">
-                    <div class="q-desc">{{q.description}}</div>
+                    <div class="q-desc" [ngClass]="{'q-error': !myForm.controls[q.id].valid, 'q-ok': myForm.controls[q.id].valid}">
+                        {{q.description}}
+                    </div>
 
                     <div *ngFor="let opt of q.options">
-                        
+
                         <input type="radio" name="{{'opt' + q.id}}" 
                             *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
                         <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
