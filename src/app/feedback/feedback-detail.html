@@ -27,17 +27,17 @@
             <div class='col-md-6 q-offset'>
                 <div class='row' *ngFor="let q of feedback.questions">
                     <div class="q-desc">{{q.description}}</div>
-                    <input #qElem name="{{q.id}}" />
 
                     <div *ngFor="let opt of q.options">
+                        
                         <input type="radio" name="{{'opt' + q.id}}" 
-                            *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
-                        <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id, q.allowMultiple)" />
+                            *ngIf="!q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
+                        <input type="checkbox" *ngIf="q.allowMultiple" (click)="onSelectOption(opt, q.id)" />
                         {{opt.description}}
                         <br />
                         <textarea #ta rows="4" cols="50" 
-                            (blur)="opt.customText=ta.value;onChangeCustomText(opt.id, ta.value, q.id);" 
-                            *ngIf="opt.isCustomText" name="{{opt.id}}">
+                            (blur)="onChangeCustomText(ta.value, q.id);" 
+                            *ngIf="opt.isCustomText">
                         </textarea>
                          
                     </div>

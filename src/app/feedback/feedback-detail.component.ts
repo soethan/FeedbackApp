@@ -51,44 +51,44 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
         this.myForm = this._formBuilder.group(validationParamObj);
     }
 
-    onSelectOption(opt: IQuestionOption, qId: string, allowMultiple: boolean): void {
-        //userAnswer => 1 Question
-        //console.log(opt.id + ";" + opt.description + ";" + qId);
-
-        let isExistingAnswer: boolean;
-        let userAns = this.userFeedback.answers.find(opt => opt.questionId == qId);
-        
-        if(userAns != null) {
-            isExistingAnswer = true;
-            if(!allowMultiple) {
-                userAns.answerOptions = new Array<AnswerOption>();
-            }
-        }
-        else {
-            userAns = new UserAnswer(qId);
-        }
-
-        let customText = opt.customText ? opt.customText : "";
-        userAns.answerOptions.push(new AnswerOption(opt.id, (opt.isCustomText ? customText : opt.description)));
-               
+    onSelectOption(opt: IQuestionOption, qId: string): void {
         this.myForm.controls[qId].markAsDirty();
-        this.myForm.controls[qId].setValue(opt.id + ';' + customText);
-        
-        if(!isExistingAnswer) {
-            this.userFeedback.answers.push(userAns);
-        }     
-        
-        console.log(this.userFeedback);
+        this.myForm.controls[qId].setValue(opt.id + ';' + opt.description);
     }
 
-    onChangeCustomText(optId, customText, qId): void {
-        this.myForm.controls[qId].setValue(this.myForm.controls[qId].value + customText);
+    onChangeCustomText(customText, qId): void {
+        this.myForm.controls[qId].setValue(this.myForm.controls[qId].value + ';' + customText);
     }
 
     onSubmit(): void {
-        for(var key in this.myForm.controls) {
-            console.log(this.myForm.controls[key].value);
+        this.populateUserFeedbackAnswers();
+        this.printUserFeedback();
+    }
+
+    populateUserFeedbackAnswers(): void{
+        this.userFeedback.answers = new Array<UserAnswer>();
+        //for each question, there is an answer with answer options
+        for(var qId in this.myForm.controls) {
+            let opts = this.myForm.controls[qId].value.split(';');
+            let optDesc = opts.length > 2 ? opts[1] + ';' + opts[2] : opts[1];
+            let ansOpt = new AnswerOption(opts[0], optDesc);
+
+            let ans = new UserAnswer(qId);
+            this.userFeedback.answers.push(ans);
+            ans.answerOptions.push(ansOpt);
+
+            console.log(this.myForm.controls[qId].value);
         }
+    }
+
+    printUserFeedback(): void{
+        console.log("this.userFeedbackId=" + this.userFeedback.feedbackId);
+        this.userFeedback.answers.forEach(ans => {
+            console.log("Q:" + ans.questionId);
+            ans.answerOptions.forEach(ansOpt => {
+                console.log("A:" + ansOpt.id + ':' + ansOpt.description);
+            });
+        });
     }
 
     onBack(): void {

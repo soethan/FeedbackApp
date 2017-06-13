@@ -46,7 +46,7 @@ export class UserFeedback implements IUserFeedback{
 
     constructor(id: string){
         this.feedbackId = id;
-        this.answers = new Array<IUserAnswer>();
+        this.answers = new Array<UserAnswer>();
     }
 }
 
