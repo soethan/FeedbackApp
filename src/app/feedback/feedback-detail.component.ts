@@ -72,7 +72,7 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     }
 
     onChangeCustomText(customText, qId): void {
-        this.myForm.controls[qId].setValue(this.myForm.controls[qId].value + ';' + customText);
+        this.myForm.controls[qId].setValue(this.myForm.controls[qId].value + ':' + customText.trim());
     }
 
     onSubmit(): void {
@@ -84,27 +84,28 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
         this.userFeedback.answers = new Array<UserAnswer>();
         //for each question, there is an answer with answer options
         for(var qId in this.myForm.controls) {
-            if(this.feedback.questions.find(q => q.id === qId).allowMultiple){
-                let opts: Array<string> = this.myForm.controls[qId].value.split(';');
-                let ans = new UserAnswer(qId);
-                
-                opts.forEach(opt => {
-                    let ansOpt = new AnswerOption(opt, '');
-                    ans.answerOptions.push(ansOpt);
-                });
-                this.userFeedback.answers.push(ans);
-                                
-            } 
-            else {
-                let opts = this.myForm.controls[qId].value.split(';');
-                let optCustomText = opts.length > 1 ? opts[1]: '';
-                let ansOpt = new AnswerOption(opts[0], optCustomText);
+            let question = this.feedback.questions.find(q => q.id === qId);
+            if(question === undefined) continue;
 
-                let ans = new UserAnswer(qId);
-                this.userFeedback.answers.push(ans);
+            let opts: Array<string> = this.myForm.controls[qId].value.split(';');
+            let ans = new UserAnswer(qId);
+            
+            opts.forEach(opt => {
+                let ansOpt;
+                if(!question.allowMultiple){
+                    if(opt.indexOf(":") != -1){
+                        ansOpt = new AnswerOption(opt.split(':')[0], opt.split(':')[1]);
+                    }
+                    else{
+                        ansOpt = new AnswerOption(opt, '');
+                    }
+                }
+                else{
+                    ansOpt = new AnswerOption(opt, '');
+                }
                 ans.answerOptions.push(ansOpt);
-            }
-            console.log(this.myForm.controls[qId].value);
+            });
+            this.userFeedback.answers.push(ans);
         }
     }
 
@@ -113,7 +114,13 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
         this.userFeedback.answers.forEach(ans => {
             console.log("Q:" + ans.questionId);
             ans.answerOptions.forEach(ansOpt => {
-                console.log("A:" + ansOpt.id + ':' + ansOpt.customText);
+                if(ansOpt.customText){
+                    console.log("A:" + ansOpt.id + ':' + ansOpt.customText.trim());
+                }
+                else{
+                    console.log("A:" + ansOpt.id);
+                }
+                
             });
         });
     }
