@@ -36,15 +36,19 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
             .subscribe(
                 feedback => {
                     this.feedback = feedback;
-                    let validationParamObj = {};
-
-                    this.feedback.questions.forEach(q => {
-                        validationParamObj[q.id] = ['', Validators.required]; 
-                    });
-                    this.myForm = this._formBuilder.group(validationParamObj);
+                    this.createValidationRules();
                 },
                 error => this.errorMessage = <any>error
             );
+    }
+
+    createValidationRules(){
+        let validationParamObj = {};
+
+        this.feedback.questions.forEach(q => {
+            validationParamObj[q.id] = ['', Validators.required]; 
+        });
+        this.myForm = this._formBuilder.group(validationParamObj);
     }
 
     onSelectOption(opt: IQuestionOption, qId: string, allowMultiple: boolean): void {
